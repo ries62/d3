@@ -18,6 +18,9 @@ const margin = { top: 40, right: 30, bottom: 160, left: 80 }
 const width = 900 - margin.left - margin.right
 const height = 500 - margin.top - margin.bottom
 
+const palette = ['#cae5ff', '#acedff', '#89bbfe', '#6f8ab7', '#615d6c']
+const hoverPalette = ['#a8ccee', '#8ad4ee', '#67a0ed', '#4e6a96', '#403c4b']
+
 const svg = d3
   .select('#app')
   .append('svg')
@@ -54,6 +57,15 @@ svg
   .attr('y', d => y(d.length))
   .attr('width', x.bandwidth())
   .attr('height', d => height - y(d.length))
+  .attr('fill', (_, i) => palette[i % palette.length])
+  .on('mouseover', function(_, d) {
+    const i = bridges.indexOf(d)
+    d3.select(this).attr('fill', hoverPalette[i % hoverPalette.length])
+  })
+  .on('mouseout', function(_, d) {
+    const i = bridges.indexOf(d)
+    d3.select(this).attr('fill', palette[i % palette.length])
+  })
 
 // X axis
 svg
