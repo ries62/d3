@@ -25,12 +25,12 @@ svg {
 }
 
 .bar {
-  fill: #646cff;
+  fill: #ff6eb4;
   transition: fill 0.2s;
 }
 
 .bar:hover {
-  fill: #535bf2;
+  fill: #e0559a;
 }
 
 .grid line {
